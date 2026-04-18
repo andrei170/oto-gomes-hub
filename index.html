@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AG1 x OTO Gomes. Growth Package.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0805;--bg-2:#110e0a;--surface:#1a160f;--line:rgba(201,151,58,.15);--text:#f8f3e8;--muted:#a69885;--gold:#c9973a;--gold-2:#e2b96a;--gold-3:#f0d79a}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.65;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(201,151,58,.025) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;top:-30%;right:-10%;width:70%;height:80%;background:radial-gradient(circle,rgba(201,151,58,.07) 0%,transparent 60%);pointer-events:none;z-index:0}
+.container{max-width:1100px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+nav{padding:28px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(10,8,5,.94);backdrop-filter:blur(14px);z-index:100}
+.nav-inner{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:22px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-cta{padding:10px 22px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#0a0805;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px}
+section{padding:90px 0}
+.hero{padding:110px 0 80px;text-align:center}
+.eyebrow{display:inline-block;padding:6px 16px;background:rgba(201,151,58,.1);border:1px solid rgba(201,151,58,.3);border-radius:24px;font-size:12px;font-weight:600;color:var(--gold-2);letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px}
+h1{font-size:clamp(44px,6vw,72px);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:28px}
+h1 em{font-style:normal;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-3) 50%,var(--gold-2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{font-size:clamp(30px,4vw,42px);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin-bottom:18px}
+h3{font-size:22px;font-weight:700}
+p{color:var(--muted);font-size:17px;max-width:680px}
+.hero p{font-size:20px;margin:0 auto 40px}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;padding:32px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.meta-item{text-align:center}
+.meta-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px}
+.meta-value{font-size:18px;color:var(--text);font-weight:600}
+.del-item{background:linear-gradient(180deg,var(--surface) 0%,var(--bg-2) 100%);border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;transition:.3s}
+.del-item:hover{border-color:rgba(201,151,58,.4)}
+.del-header{padding:28px 32px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:20px}
+.del-title{display:flex;align-items:center;gap:20px;flex:1}
+.del-num{font-family:monospace;color:var(--gold);font-size:14px;font-weight:700;letter-spacing:.1em;min-width:32px}
+.del-icon{width:44px;height:44px;background:rgba(201,151,58,.08);border:1px solid rgba(201,151,58,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.del-icon svg{width:20px;height:20px;stroke:var(--gold-2);fill:none;stroke-width:1.8}
+.del-meta h3{font-size:18px;margin-bottom:4px}
+.del-meta p{font-size:13px;color:var(--muted);margin:0}
+.del-toggle{width:32px;height:32px;border-radius:50%;background:rgba(201,151,58,.08);display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0;transition:.3s}
+.del-toggle::before,.del-toggle::after{content:'';position:absolute;background:var(--gold-2);top:50%;left:50%;transition:.3s}
+.del-toggle::before{width:12px;height:2px;transform:translate(-50%,-50%)}
+.del-toggle::after{width:2px;height:12px;transform:translate(-50%,-50%)}
+.del-item.open .del-toggle::after{opacity:0}
+.del-body{max-height:0;overflow:hidden;transition:.4s}
+.del-item.open .del-body{max-height:3000px;padding:0 32px 32px}
+.del-body-inner{padding-top:8px;border-top:1px solid var(--line);padding-left:52px}
+.del-body h4{font-size:15px;color:var(--gold-2);text-transform:uppercase;letter-spacing:.1em;margin:24px 0 12px}
+.del-body h4:first-child{margin-top:20px}
+.del-body p,.del-body li{font-size:15px;line-height:1.7;color:var(--muted)}
+.del-body ul{list-style:none;padding:0}
+.del-body li{padding:8px 0 8px 20px;position:relative}
+.del-body li::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;position:absolute;left:0;top:18px}
+.del-body strong{color:var(--text);font-weight:600}
+.del-link{display:inline-block;margin-top:20px;padding:12px 24px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#0a0805;text-decoration:none;border-radius:8px;font-weight:700;font-size:14px}
+.cta-section{background:linear-gradient(135deg,rgba(201,151,58,.08) 0%,rgba(226,185,106,.03) 100%);border:1px solid rgba(201,151,58,.25);border-radius:24px;padding:80px 60px;text-align:center;margin:40px 0 80px}
+.cta-section h2{max-width:620px;margin:0 auto 20px}
+.cta-section p{margin:0 auto 36px;max-width:580px;font-size:18px}
+.cta-primary{display:inline-block;padding:20px 44px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:#0a0805;text-decoration:none;border-radius:12px;font-weight:700;font-size:16px;box-shadow:0 12px 40px rgba(201,151,58,.3)}
+.cta-primary:hover{transform:translateY(-2px)}
+.footer{padding:60px 0;border-top:1px solid var(--line);text-align:center}
+.footer p{margin:0 auto;font-size:14px}
+.footer a{color:var(--gold-2);text-decoration:none}
+@media(max-width:768px){.meta-grid{grid-template-columns:1fr}.cta-section{padding:50px 24px}.del-item.open .del-body{padding:0 20px 24px}.del-body-inner{padding-left:0}.del-header{padding:20px}section{padding:60px 0}}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style></head><body>
+
+<nav><div class="container nav-inner"><div class="logo">AG1 CONSULTING</div><a href="https://calendly.com/andreicopy/15min" class="nav-cta" target="_blank">Book A Call</a></div></nav>
+
+<section class="hero"><div class="container">
+<div class="eyebrow reveal">GROWTH PACKAGE . BUILT FOR OTO</div>
+<h1 class="reveal">A Complete Growth System<br>Built For <em>OTO Gomes</em></h1>
+<p class="reveal">Research, copy strategy, a live landing page, a 10-email nurture sequence, three ad scripts, and a short VSL outline. Compliance-aware throughout. Built this week, yours to use regardless.</p>
+<div class="meta-grid reveal">
+<div class="meta-item"><div class="meta-label">Prospect</div><div class="meta-value">OTO Gomes</div></div>
+<div class="meta-item"><div class="meta-label">Built By</div><div class="meta-value">Andrei . AG1 Consulting</div></div>
+<div class="meta-item"><div class="meta-label">Delivered</div><div class="meta-value">April 2026</div></div>
+</div>
+</div></section>
+
+<section style="padding-top:40px"><div class="container">
+<div class="eyebrow reveal">DELIVERABLES</div>
+<h2 class="reveal">Inside The Package</h2>
+<p class="reveal" style="margin-bottom:40px">Six deliverables. Each targets a specific revenue lever I believe is being underused in your current ecosystem.</p>
+
+<!-- 01 Research -->
+<div class="del-item reveal"><div class="del-header" onclick="this.parentElement.classList.toggle('open')"><div class="del-title"><span class="del-num">01</span><div class="del-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></div><div class="del-meta"><h3>Research Snapshot</h3><p>5 bottleneck gaps identified</p></div></div><div class="del-toggle"></div></div>
+<div class="del-body"><div class="del-body-inner">
+<h4>The Five Gaps</h4>
+<ul>
+<li><strong>No VSL anywhere in the funnel.</strong> Every sales page is text-only. At $5K-$10K price points, a 3-5 minute VSL on the coaching page alone could double application volume.</li>
+<li><strong>Six product endpoints, no clear ladder.</strong> Crypto Made Easy, Freedom Circle, Freedom Academy, crypto-coaching, free-training, MasterHeart. New visitors cannot tell which one to enter or how they connect.</li>
+<li><strong>Tax-plus-crypto angle buried.</strong> 16 years tax + 14 years crypto is the single strongest differentiator. Lives in podcast interviews, not on homepage or IG bio.</li>
+<li><strong>Podcast appearances not embedded on-site.</strong> Freedom People, NYC Podcast Network, The Way Forward, own Spotify show. Strongest trust signals, all off-domain.</li>
+<li><strong>No visible email nurture after lead magnet.</strong> Workbook captures name and email, then nothing. At $5K-$10K price points, trust requires more than one touchpoint.</li>
+</ul>
+<h4>Highest-Impact Fix</h4>
+<p>Build a short VSL for the coaching application page. Reposition homepage around tax-aware crypto structuring. Consolidate six endpoints into one offer ladder with price hinting. Install a 10-email nurture from workbook opt-in to application.</p>
+</div></div></div>
+
+<!-- 02 Campaign Angles -->
+<div class="del-item reveal"><div class="del-header" onclick="this.parentElement.classList.toggle('open')"><div class="del-title"><span class="del-num">02</span><div class="del-icon"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3v18"/></svg></div><div class="del-meta"><h3>5 Campaign Angles + 3 Ad Scripts</h3><p>Tax-plus-crypto repositioning, compliance-safe</p></div></div><div class="del-toggle"></div></div>
+<div class="del-body"><div class="del-body-inner">
+<h4>Angle Matrix</h4>
+<ul>
+<li><strong>Tax Plus Crypto, The Rare Combination</strong>. Authority stacking. Two credentials that almost never overlap.</li>
+<li><strong>Crypto Without The Tax Disaster</strong>. Pain-first. Year-one tax trap is specific and urgent.</li>
+<li><strong>From $20K To $17M, The Structural Version</strong>. Founder story with the drawdowns and discipline, not just the headline number.</li>
+<li><strong>The Freedom Math (Structured)</strong>. Lifestyle grounded in discipline math, not aspiration.</li>
+<li><strong>Your CPA Does Not Understand Crypto</strong>. Positions OTO as the bridge between tax and crypto worlds.</li>
+</ul>
+<h4>Ad Scripts</h4>
+<ul>
+<li><strong>Script 1 (30s):</strong> The Rare Combination. Credential stack, free training CTA.</li>
+<li><strong>Script 2 (45s):</strong> The Year-One Tax Trap. Pain-first, basis tracking, holding period surprise.</li>
+<li><strong>Script 3 (45s):</strong> Founder Story. $20K to $17M with full context, drawdowns, 14 years experience first.</li>
+</ul>
+<h4>Voice Rules</h4>
+<p>Structure-forward, not moonshot. Every paid asset includes "not financial or tax advice" and past-performance language. Avoid "passive income," "retire in 12 months," "guaranteed returns."</p>
+</div></div></div>
+
+<!-- 03 Email Sequence -->
+<div class="del-item reveal"><div class="del-header" onclick="this.parentElement.classList.toggle('open')"><div class="del-title"><span class="del-num">03</span><div class="del-icon"><svg viewBox="0 0 24 24"><path d="M3 7l9 6 9-6v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M3 7l9 6 9-6"/></svg></div><div class="del-meta"><h3>10-Email Nurture Sequence</h3><p>Story-based, 25-day drip, compliance throughout</p></div></div><div class="del-toggle"></div></div>
+<div class="del-body"><div class="del-body-inner">
+<h4>Sequence Overview</h4>
+<p>150-300 words per email, story-based, value-first. Tax education that builds trust before any pitch. Final emails open Crypto Made Easy, Circle, and 1-on-1 invitations.</p>
+<h4>Email Arc</h4>
+<ul>
+<li>Day 0: Welcome, the rare combination (16yr tax + 14yr crypto)</li>
+<li>Day 2: The year-one tax trap (basis tracking, short-term gains, wallet missteps)</li>
+<li>Day 4: $20K to $17M, the real version (drawdowns, discipline, context)</li>
+<li>Day 7: Dr. Seth Gerlach case study (skeptic to structured investor)</li>
+<li>Day 10: Three holding structures at high level (taxable, IRA/Roth, trust)</li>
+<li>Day 13: The bridge between two worlds (CPA vs crypto friend)</li>
+<li>Day 16: The freedom math (discipline math, not aspiration)</li>
+<li>Day 19: The three tiers clearly explained (CME, Circle, 1-on-1)</li>
+<li>Day 22: Podcast appearances for long-form trust building</li>
+<li>Day 25: Three options, final CTA</li>
+</ul>
+</div></div></div>
+
+<!-- 04 Landing Page -->
+<div class="del-item reveal"><div class="del-header" onclick="this.parentElement.classList.toggle('open')"><div class="del-title"><span class="del-num">04</span><div class="del-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div><div class="del-meta"><h3>Live Landing Page</h3><p>Emerald + gold, tax-first positioning, deployed</p></div></div><div class="del-toggle"></div></div>
+<div class="del-body"><div class="del-body-inner">
+<h4>Live URL</h4>
+<p><a href="https://andrei170.github.io/oto-gomes-landing/" target="_blank" style="color:var(--gold-2)">andrei170.github.io/oto-gomes-landing/</a></p>
+<h4>What Is On It</h4>
+<ul>
+<li>Credential banner above the fold (16yr tax, 14yr crypto, 2,500+ community)</li>
+<li>Hero: "Crypto With A Tax Structure, Not A Tax Disaster"</li>
+<li>VSL placeholder with play button</li>
+<li>Stats bar (16yr, 14yr, 2,500+, 100+)</li>
+<li>3 Problem cards (basis tracking, short-term gains, wallet missteps)</li>
+<li>3 Phase framework (Structure, Positioning, Discipline)</li>
+<li>3 Testimonials (Dr. Seth Gerlach, Ashley Haupt, Dr. Joseph Yi)</li>
+<li>Lead capture for free workbook</li>
+<li>Consolidated offer box with all three tiers</li>
+<li>Founder story card with $20K to $17M context</li>
+<li>FAQ + compliance disclaimer</li>
+<li>Mobile responsive, scroll-reveal animations</li>
+</ul>
+<a href="https://andrei170.github.io/oto-gomes-landing/" target="_blank" class="del-link">View Landing Page</a>
+</div></div></div>
+
+<!-- 05 VSL Outline -->
+<div class="del-item reveal"><div class="del-header" onclick="this.parentElement.classList.toggle('open')"><div class="del-title"><span class="del-num">05</span><div class="del-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/></svg></div><div class="del-meta"><h3>VSL Short Preview Outline</h3><p>3-5 min structured script</p></div></div><div class="del-toggle"></div></div>
+<div class="del-body"><div class="del-body-inner">
+<h4>5-Section Structure</h4>
+<ul>
+<li><strong>Hook (0-20s):</strong> "If you are in crypto without a tax structure, the next three minutes will either save you an audit or a year of returns."</li>
+<li><strong>Problem (20s-1:00):</strong> Year-one tax exposure. Basis tracking, short-term gains, wallet missteps.</li>
+<li><strong>Mechanism (1:00-2:30):</strong> Tax structuring first, crypto positioning second. Three holding structures. Common mistakes and year-end fixes.</li>
+<li><strong>Proof (2:30-3:30):</strong> 16yr tax, 14yr crypto, $20K to $17M with drawdown context, 2,500+ community, testimonials, podcast appearances.</li>
+<li><strong>CTA (3:30-5:00):</strong> Three tiers explained. Application-based. Payment plans. "Not financial or tax advice."</li>
+</ul>
+<p style="margin-top:16px">Short preview format. Full long-form VSL scripted after approval.</p>
+</div></div></div>
+
+<!-- 06 Loom Script -->
+<div class="del-item reveal"><div class="del-header" onclick="this.parentElement.classList.toggle('open')"><div class="del-title"><span class="del-num">06</span><div class="del-icon"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1118 0 9 9 0 01-18 0z"/><path d="M12 7v5l3 3"/></svg></div><div class="del-meta"><h3>Loom Walk-through Script</h3><p>2-3 min, internal use</p></div></div><div class="del-toggle"></div></div>
+<div class="del-body"><div class="del-body-inner">
+<h4>Script Overview</h4>
+<p>Internal recording script for Andrei. Opens with the package, walks through all five gaps, shows the landing page, closes with 15-min Calendly CTA. Professional peer tone, compliance-aware, specific numbers throughout.</p>
+<p style="margin-top:12px">Target length: 2:15-2:45</p>
+</div></div></div>
+
+</div></section>
+
+<section><div class="container">
+<div class="cta-section reveal">
+<div class="eyebrow">NEXT STEP</div>
+<h2>If Any Of This Clicks,<br>Let's Talk For 15 Minutes</h2>
+<p>No pitch unless it makes sense for both of us. Just a conversation about the homepage repositioning, the offer-ladder consolidation, and the VSL build.</p>
+<a href="https://calendly.com/andreicopy/15min" class="cta-primary" target="_blank">Book A 15-Min Call</a>
+</div>
+</div></section>
+
+<footer class="footer"><div class="container"><p>Built by <a href="#">AG1 Consulting</a> . <a href="mailto:info@andreicopy.net">info@andreicopy.net</a> . April 2026</p></div></footer>
+
+<script>const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.1});document.querySelectorAll('.reveal').forEach(e=>obs.observe(e));</script>
+</body></html>
